@@ -7,8 +7,8 @@ class Ship() :
         """Initlize the ship and set its starting position"""
 
         self.screen = screen
-
-        self.images = pygame.image.load("images/Thor.bmp")
+        
+        self.images = pygame.image.load("images/ship2.jpg")
         self.images = pygame.transform.scale(self.images,(80,90))
         self.rect = self.images.get_rect()
         self.screen_rect = screen.get_rect()
@@ -29,6 +29,5 @@ class Ship() :
     def blitme(self) :
         """Draw the ship at its currunt location"""
         self.screen.blit(self.images,self.rect)
-
-
+    
     
