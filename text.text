@@ -1,0 +1,33 @@
+import pygame
+
+from settings import Settings
+
+from ship import Ship
+
+import game_functions as gf
+
+
+def run_game() :
+    """Initilize the game and creates a screen objects"""
+    pygame.init()
+
+    ai_settings = Settings()
+
+    screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))
+
+    ship = Ship(screen)
+    ship.images = pygame.image.load("images/Thor.bmp")
+    ship.images = pygame.transform.scale(ship.images,(80,90))
+    ship.rect  = ship.images.get_rect()
+    ship.screen_rect = screen.get_rect()
+
+    ship.rect.centerx = ship.screen_rect.centerx
+    ship.rect.center = ship.screen_rect.center
+
+
+    while True :
+        gf.check_function()
+        gf.update_screen(ai_settings,screen,ship)
+
+
+run_game()
