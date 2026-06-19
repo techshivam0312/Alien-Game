@@ -1,0 +1,23 @@
+import pygame 
+from pygame.sprite import Sprite
+
+class Alien() :
+
+    def __init__(self,ai_setting,screen) :
+
+        super(Alien,self).__init__()
+
+        self.screen = screen
+        self.alien_setting = ai_setting  
+
+        self.image = pygame.image.load("images/Spaceship.bmp")
+        self.image = pygame.transform.scale(self.image,(100,90))
+        self.rect = self.image.get_rect()
+
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+
+        self.x = float(self.rect.x)
+
+    def blitme(self) :
+        self.screen.blit(self.image,self.rect)

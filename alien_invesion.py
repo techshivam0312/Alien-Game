@@ -8,6 +8,7 @@ import game_functions as gf
 
 from pygame.sprite import Group
 
+from alien import Alien
 
 def run_game() :
     """Initilize the game and creates a screen objects """
@@ -21,11 +22,13 @@ def run_game() :
 
     bullets = Group()
 
+    alien = Alien(ai_settings,screen)
+
     while True :
         gf.check_events(ai_settings,screen,ship,bullets)
         ship.update()
         gf.update_bullets(bullets)
-        gf.update_screen(ai_settings,screen,ship,bullets)
+        gf.update_screen(ai_settings,screen,ship,bullets,alien)
 
 
 run_game()

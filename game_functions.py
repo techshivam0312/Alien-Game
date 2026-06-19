@@ -6,9 +6,13 @@ from bullet import Bullets
 
 
 
+
+
 def check_keydown_event(event,ship,ai_settings,screen,bullets) :
         if event.key == pygame.K_RIGHT :
             ship.moving_right = True
+        elif event.key == pygame.K_q :
+            sys.exit()
         elif event.key == pygame.K_LEFT :
             ship.moving_left = True
         elif event.key == pygame.K_SPACE:
@@ -56,11 +60,11 @@ def update_bullets(bullets) :
             bullets.remove(bullet)
 
             
-def update_screen(ai_settings,screen,ship,bullets) :
+def update_screen(ai_settings,screen,ship,bullets,alien) :
     """Change the screen and ai settings"""
     screen.fill(ai_settings.bg_color)
     ship.blitme()
-
+    alien.blitme()
     for bullet in bullets.sprites() :
         bullet.draw_bullets()
 
