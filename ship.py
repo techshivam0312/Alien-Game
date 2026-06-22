@@ -1,16 +1,18 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Ship() :
+class Ship(Sprite) :
     """Initalize the images of the games"""
 
     def __init__(self,ai_settings,screen) :
         """Initlize the ship and set its starting position"""
+        super(Ship,self).__init__()
 
         self.screen = screen
         
-        self.images = pygame.image.load("images/Thor.bmp")
-        self.images = pygame.transform.scale(self.images,(80,90))
-        self.rect = self.images.get_rect()
+        self.image = pygame.image.load("images/Thor.bmp")
+        self.image = pygame.transform.scale(self.image,(80,90))
+        self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
         self.rect.centerx = self.screen_rect.centerx
@@ -45,11 +47,11 @@ class Ship() :
             
     def center_ship(self):
         """Center the ship on the screen."""
-        self.center = self.screen_rect.centerx
-
+        self.centerx = self.screen_rect.centerx
+        self.rect.centerx = self.centerx
 
     def blitme(self) :
         """Draw the ship at its currunt location"""
-        self.screen.blit(self.images,self.rect)
+        self.screen.blit(self.image,self.rect)
     
     
